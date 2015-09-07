@@ -36,6 +36,17 @@ public class HW1Model {
         greenSliderVal  = new SimpleDoubleProperty();
         blueSliderVal   = new SimpleDoubleProperty();
         color           = new SimpleObjectProperty<Color>();
+
+        redSliderVal.addListener(((observable, oldValue, newValue) -> {
+            color.set(makeColor(newValue.doubleValue(), greenSliderVal.get(), blueSliderVal.get()));
+        }));
+        greenSliderVal.addListener(((observable, oldValue, newValue) -> {
+            color.set(makeColor(redSliderVal.get(), newValue.doubleValue(), blueSliderVal.get()));
+        }));
+        blueSliderVal.addListener(((observable, oldValue, newValue) -> {
+            color.set(makeColor(redSliderVal.get(), greenSliderVal.get(), newValue.doubleValue()));
+        }));
+
     }
 
     public final double getRedSliderValue(){return redSliderVal.get();}
@@ -54,4 +65,8 @@ public class HW1Model {
     public final Color getColor(){return color.get();}
     public final void setColor(Color color){this.color.set(color);}
     public ObjectProperty<Color> colorObjectProperty(){return color;}
+
+    private Color makeColor(double r, double g, double b){
+        return Color.color(r,g,b);
+    }
 }

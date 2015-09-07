@@ -147,15 +147,14 @@ public class HW1View extends GridPane {
 
 
     public void setColor(Color c){
-        System.out.println(c.toString());
-//        String RGB = percentToRGB(c.getRed(), c.getGreen(), c.getBlue());
-//        String newBackgroundColor =  "-fx-background-color: rgb(" + RGB + ");";
-//        lookup("#colorBox").setStyle(newBackgroundColor);
+        String RGB = percentToRGB(c.getRed(), c.getGreen(), c.getBlue());
+        String newBackgroundColor =  "-fx-background-color: rgb(" + RGB + ");";
+        lookup("#colorBox").setStyle(newBackgroundColor);
     }
     public String percentToRGB(double red, double green, double blue){
-        return Double.toString(red  *2.55)  + "," +
-               Double.toString(green*2.55)  + "," +
-               Double.toString(blue *2.55);
+        return Double.toString(red  *255)  + "," +
+               Double.toString(green*255)  + "," +
+               Double.toString(blue *255);
 
     }
 
