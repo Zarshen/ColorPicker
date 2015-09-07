@@ -32,17 +32,21 @@ public class HW1View extends GridPane {
         super();
 
         //Layout
+        setPadding(new Insets(10));
+        setVgap(10);
+        setHgap(10);
+
         //Column Settings
         ColumnConstraints column0 = new ColumnConstraints();
-        column0.setPercentWidth(20);
+        column0.setPercentWidth(25);
         column0.setHalignment(HPos.CENTER);
 
         ColumnConstraints column1 = new ColumnConstraints();
-        column1.setPercentWidth(60);
+        column1.setPercentWidth(50);
         column1.setHalignment(HPos.CENTER);
 
         ColumnConstraints column2 = new ColumnConstraints();
-        column2.setPercentWidth(20);
+        column2.setPercentWidth(25);
         column2.setHalignment(HPos.CENTER);
 
         getColumnConstraints().addAll(column0, column1, column2);
@@ -104,8 +108,6 @@ public class HW1View extends GridPane {
         add(blueSliderLabel, 0, 3);
         add(blueSlider, 1, 3);
         add(blueSliderValue, 2, 3);
-
-        setPadding(new Insets(10));
     }
 
     //Initialization Helper Functions
