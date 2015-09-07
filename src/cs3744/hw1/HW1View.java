@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
@@ -17,17 +16,17 @@ public class HW1View extends GridPane {
 
     private Label colorBox = null;
 
-    private Label  redSliderLabel   = null;
-    private Slider redSlider        = null;
-    private Label  redSliderValue   = null;
+    private Label  redSliderLabel;
+    private Slider redSlider     ;
+    private Label  redSliderValue;
 
-    private Label  greenSliderLabel = null;
-    private Slider greenSlider      = null;
-    private Label  greenSliderValue = null;
+    private Label  greenSliderLabel;
+    private Slider greenSlider;
+    private Label  greenSliderValue;
 
-    private Label  blueSliderLabel  = null;
-    private Slider blueSlider       = null;
-    private Label  blueSliderValue  = null;
+    private Label  blueSliderLabel;
+    private Slider blueSlider;
+    private Label  blueSliderValue;
 
     public HW1View(){
         super();
@@ -60,6 +59,34 @@ public class HW1View extends GridPane {
         row3.setPercentHeight(10);
         getRowConstraints().addAll(row0, row1, row2, row3);
 
+
+        //Component value initialization
+        colorBox = createLabel("", "colorBox");
+        colorBox.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+
+        redSliderLabel = createLabel("Red");
+        redSlider      = createSlider("redSlider");
+        redSliderValue = createLabel("0.00", "redSliderValue");
+
+        greenSliderLabel = createLabel("Green");
+        greenSlider      = createSlider("greenSlider");
+        greenSliderValue = createLabel("0.00", "greenSliderValue");
+
+        blueSliderLabel = createLabel("Blue");
+        blueSlider      = createSlider("blueSlider");
+        blueSliderValue = createLabel("0.00", "blueSliderValue");
+
+        redSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            redSliderValue.setText(String.format("%.2f", newValue.doubleValue()));
+        });
+        greenSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            greenSliderValue.setText(String.format("%.2f", newValue.doubleValue()));
+        });
+        blueSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            blueSliderValue.setText(String.format("%.2f", newValue.doubleValue()));
+        });
+
         //Row 0
         add(colorBox, 0, 0, 3, 1);
 
@@ -79,33 +106,6 @@ public class HW1View extends GridPane {
         add(blueSliderValue, 2, 3);
 
         setPadding(new Insets(10));
-
-        //Component value initialization
-        this.colorBox = createLabel("", "colorBox");
-        colorBox.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
-
-
-        this.redSliderLabel = createLabel("Red");
-        this.redSlider      = createSlider("redSlider");
-        this.redSliderValue = createLabel("0.00", "redSliderValue");
-
-        this.greenSliderLabel = createLabel("Green");
-        this.greenSlider      = createSlider("greenSlider");
-        this.greenSliderValue = createLabel("0.00", "greenSliderValue");
-
-        this.blueSliderLabel = createLabel("Blue");
-        this.blueSlider      = createSlider("blueSlider");
-        this.blueSliderValue = createLabel("0.00", "blueSliderValue");
-
-        redSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            redSliderValue.setText(Double.toString(newValue.doubleValue()));
-        });
-        greenSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            greenSliderValue.setText(Double.toString(newValue.doubleValue()));
-        });
-        blueSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            blueSliderValue.setText(Double.toString(newValue.doubleValue()));
-        });
     }
 
     //Initialization Helper Functions

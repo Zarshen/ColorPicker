@@ -26,25 +26,25 @@ import javafx.scene.paint.Color;
 
 public class HW1Model {
 
-    private DoubleProperty redSliderVal = null;
-    private DoubleProperty greenSliderVal  = null;
-    private DoubleProperty blueSliderVal  = null;
-    private ObjectProperty<Color> color = null;
+    private DoubleProperty redSliderVal;
+    private DoubleProperty greenSliderVal;
+    private DoubleProperty blueSliderVal;
+    private ObjectProperty<Color> color;
 
     public HW1Model() {
-        redSliderVal    = new SimpleDoubleProperty();
-        greenSliderVal  = new SimpleDoubleProperty();
-        blueSliderVal   = new SimpleDoubleProperty();
-        color           = new SimpleObjectProperty<Color>();
+        redSliderVal    = new SimpleDoubleProperty(0);
+        greenSliderVal  = new SimpleDoubleProperty(0);
+        blueSliderVal   = new SimpleDoubleProperty(0);
+        color           = new SimpleObjectProperty<Color>(Color.BLACK);
 
         redSliderVal.addListener(((observable, oldValue, newValue) -> {
-            color.set(makeColor(newValue.doubleValue(), greenSliderVal.get(), blueSliderVal.get()));
+            color.set(makeColor(newValue.doubleValue()/100, color.get().getGreen(), color.get().getBlue()));
         }));
         greenSliderVal.addListener(((observable, oldValue, newValue) -> {
-            color.set(makeColor(redSliderVal.get(), newValue.doubleValue(), blueSliderVal.get()));
+            color.set(makeColor(color.get().getRed(), newValue.doubleValue()/100, color.get().getBlue()));
         }));
         blueSliderVal.addListener(((observable, oldValue, newValue) -> {
-            color.set(makeColor(redSliderVal.get(), greenSliderVal.get(), newValue.doubleValue()));
+            color.set(makeColor(color.get().getRed(), color.get().getGreen(), newValue.doubleValue()/100));
         }));
 
     }
