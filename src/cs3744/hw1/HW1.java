@@ -24,7 +24,7 @@ public class HW1 extends Application {
         model.setBlueSliderValue(BLUE_VAL);
 
         Scene scene = new Scene(view, 400, 500);
-        scene.getStylesheets().add(HW1.class.getResource("stylesheets/hw1.css").toExternalForm());
+        scene.getStylesheets().add(HW1.class.getResource("hw1.css").toExternalForm());
 
 
         primaryStage.setTitle("HW1: bpp226");
