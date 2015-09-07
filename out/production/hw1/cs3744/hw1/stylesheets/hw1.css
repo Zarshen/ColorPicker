@@ -1,0 +1,29 @@
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+#colorBox{
+    -fx-background-color: #000000;
+}
+#redSliderValue {
+    -fx-text-fill: #FF0000;
+}
+#greenSliderValue {
+    -fx-text-fill: #00FF00;
+}
+#blueSliderValue {
+    -fx-text-fill: #0000FF;
+}
+
+#redSlider, #blueSlider, #greenSlider {
+    -fx-orientation: horizontal;
+    -fx-show-tick-labels: true;
+    -fx-show-tick-marks: true;
+    -fx-major-tick-unit: 50;
+    -fx-minor-tick-count: 5;
+    -fx-show-tick-labels: true;
+    -fx-snap-to-ticks: false;
+    -fx-block-increment: 10;
+    -fx-alignment: center;
+}
